@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOTA | Makeup Artist</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+ --brown:#50372E;
+ --brown2:#76564A;
+ --rose:#C58E91;
+ --pink:#EBD3CE;
+ --cream:#FAF5F0;
+ --white:#FFFCF9;
+ --muted:#947F74;
+}
+
+* {margin:0;padding:0;box-sizing:border-box;}
+
+html {scroll-behavior:smooth;}
+
+body {
+ background:var(--cream);
+ color:var(--brown);
+ font-family:'Tajawal',sans-serif;
+ font-weight:400;
+ transition:.3s;
+}
+
+body.en {
+ direction:ltr;
+ font-family:'DM Sans',sans-serif;
+}
+
+a {text-decoration:none;color:inherit;}
+button {font-family:inherit;cursor:pointer;}
+
+header {
+ height:85px;
+ padding:0 8%;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ background:rgba(250,245,240,.95);
+ position:sticky;
+ top:0;
+ z-index:10;
+ border-bottom:1px solid #eadbd4;
+ backdrop-filter:blur(12px);
+}
+
+.logo {
+ font-family:'Playfair Display',serif;
+ font-size:29px;
+ letter-spacing:4px;
+ font-weight:600;
+}
+
+.logo small {
+ display:block;
+ font-family:'DM Sans',sans-serif;
+ font-size:9px;
+ color:var(--rose);
+ letter-spacing:4px;
+ text-align:center;
+}
+
+nav {
+ display:flex;
+ align-items:center;
+ gap:30px;
+ font-size:13px;
+}
+
+nav a {transition:.3s;}
+nav a:hover {color:var(--rose);}
+
+.lang {
+ border:1px solid var(--rose);
+ background:transparent;
+ padding:9px 16px;
+ color:var(--brown);
+ border-radius:30px;
+ font-size:11px;
+}
+
+.hero {
+ min-height:690px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ text-align:center;
+ padding:90px 20px;
+ position:relative;
+ overflow:hidden;
+}
+
+.hero::before {
+ content:'';
+ position:absolute;
+ width:500px;
+ height:500px;
+ border:1px solid #E6C9C2;
+ border-radius:50%;
+ opacity:.55;
+}
+
+.hero::after {
+ content:'';
+ position:absolute;
+ width:400px;
+ height:400px;
+ border:1px solid #E6C9C2;
+ border-radius:50%;
+ opacity:.55;
+}
+
+.hero-content {
+ position:relative;
+ z-index:1;
+ max-width:750px;
+ animation:appear 1.2s ease;
+}
+
+.eyebrow {
+ color:var(--rose);
+ font-size:13px;
+ letter-spacing:3px;
+ margin-bottom:35px;
+}
+
+.hero h1 {
+ font-family:'Playfair Display',serif;
+ font-size:clamp(85px,15vw,155px);
+ font-weight:400;
+ line-height:1;
+ letter-spacing:10px;
+}
+
+.hero h2 {
+ color:var(--rose);
+ font-family:'Playfair Display',serif;
+ font-size:22px;
+ font-weight:400;
+ letter-spacing:5px;
+ margin-top:18px;
+}
+
+.hero .intro {
+ font-size:16px;
+ line-height:2.2;
+ max-width:550px;
+ margin:30px auto;
+ color:var(--muted);
+}
+
+.hero-line {
+ height:1px;
+ width:65px;
+ background:var(--rose);
+ margin:25px auto;
+}
+
+.btn {
+ display:inline-block;
+ padding:15px 32px;
+ font-size:13px;
+ transition:.3s;
+ margin:5px;
+}
+
+.primary {
+ background:var(--brown);
+ color:white;
+}
+
+.primary:hover {
+ background:var(--rose);
+ transform:translateY(-3px);
+}
+
+.secondary {
+ border:1px solid var(--rose);
+}
+
+.secondary:hover {
+ background:var(--pink);
+}
+
+.section {
+ padding:95px 9%;
+}
+
+.heading {
+ text-align:center;
+ margin-bottom:55px;
+}
+
+.heading span {
+ color:var(--rose);
+ font-size:10px;
+ letter-spacing:4px;
+}
+
+.heading h2 {
+ font-family:'Playfair Display','Tajawal',serif;
+ font-size:39px;
+ font-weight:400;
+ margin:13px 0;
+}
+
+.heading p {
+ font-size:14px;
+ color:var(--muted);
+ line-height:2;
+}
+
+.about {
+ background:var(--white);
+}
+
+.about-content {
+ max-width:750px;
+ text-align:center;
+ margin:auto;
+}
+
+.about-content p {
+ color:#806C62;
+ font-size:16px;
+ line-height:2.5;
+}
+
+.stats {
+ display:flex;
+ justify-content:center;
+ gap:90px;
+ margin-top:45px;
+}
+
+.stat strong {
+ display:block;
+ font-family:'Playfair Display',serif;
+ color:var(--rose);
+ font-size:48px;
+ font-weight:400;
+}
+
+.stat span {
+ font-size:13px;
+ color:var(--muted);
+}
+
+.services {
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:20px;
+ max-width:900px;
+ margin:auto;
+}
+
+.service {
+ border:1px solid #E8D7D0;
+ padding:48px 30px;
+ text-align:center;
+ transition:.4s;
+ background:rgba(255,255,255,.4);
+}
+
+.service:hover {
+ background:white;
+ transform:translateY(-6px);
+ border-color:var(--rose);
+}
+
+.service .num {
+ font-family:'Playfair Display',serif;
+ font-size:35px;
+ color:var(--rose);
+}
+
+.service h3 {
+ font-size:20px;
+ font-weight:500;
+ margin:15px 0;
+}
+
+.service p {
+ font-size:14px;
+ line-height:2.2;
+ color:var(--muted);
+}
+
+.skills-section {
+ background:var(--brown);
+ color:var(--cream);
+}
+
+.skills-section .heading h2 {color:var(--cream);}
+.skills-section .heading p {color:#D7C4B9;}
+
+.skills {
+ display:grid;
+ grid-template-columns:repeat(5,1fr);
+ gap:15px;
+}
+
+.skill {
+ border:1px solid rgba(255,255,255,.2);
+ text-align:center;
+ padding:30px 10px;
+ transition:.3s;
+}
+
+.skill:hover {
+ background:rgba(255,255,255,.1);
+ border-color:var(--rose);
+}
+
+.skill .number {
+ color:var(--rose);
+ font-family:'Playfair Display',serif;
+ font-size:28px;
+ margin-bottom:12px;
+}
+
+.skill h3 {
+ font-size:14px;
+ font-weight:400;
+ line-height:2;
+}
+
+.experience {
+ background:var(--white);
+ text-align:center;
+}
+
+.experience-content {
+ max-width:700px;
+ margin:auto;
+}
+
+.experience-content p {
+ font-size:16px;
+ color:var(--muted);
+ line-height:2.5;
+}
+
+.experience-number {
+ font-family:'Playfair Display',serif;
+ font-size:90px;
+ color:var(--rose);
+ line-height:1.2;
+}
+
+.contact {
+ text-align:center;
+}
+
+.contact-card {
+ max-width:750px;
+ margin:auto;
+ background:var(--white);
+ padding:55px 25px;
+ border:1px solid #E9D9D1;
+}
+
+.contact-card h2 {
+ font-family:'Playfair Display','Tajawal',serif;
+ font-size:45px;
+ font-weight:400;
+}
+
+.contact-card p {
+ font-size:15px;
+ color:var(--muted);
+ margin:15px 0 30px;
+ line-height:2.3;
+}
+
+.contact-links {
+ display:flex;
+ flex-wrap:wrap;
+ justify-content:center;
+ gap:12px;
+}
+
+.contact-links a {
+ border:1px solid #E7D3CC;
+ padding:13px 18px;
+ font-size:12px;
+ transition:.3s;
+}
+
+.contact-links a:hover {
+ background:var(--brown);
+ color:white;
+}
+
+.location {
+ margin-top:30px;
+ color:var(--rose);
+ font-size:13px;
+ letter-spacing:2px;
+}
+
+footer {
+ background:var(--brown);
+ color:#EBDAD2;
+ text-align:center;
+ padding:30px 15px;
+ font-size:12px;
+ line-height:2.5;
+}
+
+footer strong {
+ font-family:'Playfair Display',serif;
+ font-size:24px;
+ letter-spacing:4px;
+}
+
+@keyframes appear {
+ from {opacity:0;transform:translateY(25px);}
+ to {opacity:1;transform:translateY(0);}
+}
+
+@media(max-width:750px) {
+ header {padding:0 5%;height:75px;}
+ nav {gap:13px;font-size:11px;}
+ nav a:nth-child(2) {display:none;}
+ .hero {min-height:650px;}
+ .hero h1 {font-size:85px;letter-spacing:5px;}
+ .section {padding:75px 6%;}
+ .skills {grid-template-columns:repeat(2,1fr);}
+ .stats {gap:40px;}
+}
+
+@media(max-width:480px) {
+ .logo {font-size:23px;}
+ nav {gap:9px;}
+ nav a {font-size:10px;}
+ .hero h1 {font-size:65px;}
+ .hero h2 {font-size:16px;letter-spacing:3px;}
+ .hero .intro {font-size:14px;}
+ .services {grid-template-columns:1fr;}
+ .heading h2 {font-size:31px;}
+ .stats {gap:25px;}
+ .stat strong {font-size:39px;}
+ .contact-card h2 {font-size:35px;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <a href="#" class="logo">
+  TOTA
+  <small>MAKEUP ARTIST</small>
+ </a>
+
+ <nav>
+  <a href="#about" data-ar="من أنا" data-en="About">من أنا</a>
+  <a href="#services" data-ar="الخدمات" data-en="Services">الخدمات</a>
+  <a href="#skills" data-ar="مهاراتي" data-en="Skills">مهاراتي</a>
+  <a href="#contact" data-ar="التواصل" data-en="Contact">التواصل</a>
+  <button class="lang" onclick="toggleLang()">EN</button>
+ </nav>
+</header>
+
+<section class="hero">
+ <div class="hero-content">
+
+  <div class="eyebrow"
+   data-ar="الجمال في التفاصيل"
+   data-en="BEAUTY IS IN THE DETAILS">
+   الجمال في التفاصيل
+  </div>
+
+  <h1>TOTA</h1>
+  <h2>MAKEUP ARTIST</h2>
+
+  <div class="hero-line"></div>
+
+  <p class="intro"
+   data-ar="أؤمن أن الجمال الحقيقي يبدأ من إبراز ملامحك الخاصة. أقدم لكِ تجربة مكياج تجمع بين الأناقة والأنوثة والاهتمام بأدق التفاصيل، لتكون إطلالتك انعكاساً لجمالك وشخصيتك في كل مناسبة."
+   data-en="I believe true beauty begins with enhancing your natural features. I create elegant and feminine makeup looks with attention to every detail, making every special occasion a reflection of your unique beauty.">
+   أؤمن أن الجمال الحقيقي يبدأ من إبراز ملامحك الخاصة. أقدم لكِ تجربة مكياج تجمع بين الأناقة والأنوثة والاهتمام بأدق التفاصيل، لتكون إطلالتك انعكاساً لجمالك وشخصيتك في كل مناسبة.
+  </p>
+
+  <a href="https://wa.me/966546797373" class="btn primary"
+   data-ar="احجزي موعدك"
+   data-en="BOOK AN APPOINTMENT">احجزي موعدك</a>
+
+  <a href="#about" class="btn secondary"
+   data-ar="اكتشفي المزيد"
+   data-en="DISCOVER MORE">اكتشفي المزيد</a>
+
+ </div>
+</section>
+
+<section class="section about" id="about">
+
+ <div class="heading">
+  <span>01 — ABOUT ME</span>
+  <h2 data-ar="من أنا؟" data-en="A LITTLE ABOUT ME">من أنا؟</h2>
+  <p data-ar="شغفي هو أن أكون جزءاً من أجمل لحظاتك"
+   data-en="My passion is being part of your most beautiful moments">
+   شغفي هو أن أكون جزءاً من أجمل لحظاتك
+  </p>
+ </div>
+
+ <div class="about-content">
+  <p
+   data-ar="أنا توتا، خبيرة مكياج أؤمن أن لكل امرأة جمالاً مختلفاً يستحق أن يُبرز بطريقة خاصة. بخبرة تمتد إلى 7 سنوات في عالم التجميل، أحرص على تقديم إطلالات تناسب ملامح كل عميلة وذوقها، مع الاهتمام بالتفاصيل وجودة العمل. هدفي أن تشعري بالثقة والراحة وأن تحبي إطلالتك من أول نظرة."
+   data-en="I'm Tota, a makeup artist who believes every woman has a unique beauty worth celebrating. With 7 years of experience in the beauty industry, I focus on creating looks that complement each client's features and personal style. My goal is to make you feel confident, comfortable and beautiful.">
+   أنا توتا، خبيرة مكياج أؤمن أن لكل امرأة جمالاً مختلفاً يستحق أن يُبرز بطريقة خاصة. بخبرة تمتد إلى 7 سنوات في عالم التجميل، أحرص على تقديم إطلالات تناسب ملامح كل عميلة وذوقها، مع الاهتمام بالتفاصيل وجودة العمل. هدفي أن تشعري بالثقة والراحة وأن تحبي إطلالتك من أول نظرة.
+  </p>
+
+  <div class="stats">
+   <div class="stat">
+    <strong>7+</strong>
+    <span data-ar="سنوات خبرة" data-en="Years Experience">سنوات خبرة</span>
+   </div>
+   <div class="stat">
+    <strong>02</strong>
+    <span data-ar="خدمات رئيسية" data-en="Main Services">خدمات رئيسية</span>
+   </div>
+   <div class="stat">
+    <strong>100%</strong>
+    <span data-ar="اهتمام بالتفاصيل" data-en="Attention to Detail">اهتمام بالتفاصيل</span>
+   </div>
+  </div>
+ </div>
+
+</section>
+
+<section class="section" id="services">
+
+ <div class="heading">
+  <span>02 — MY SERVICES</span>
+  <h2 data-ar="خدماتي" data-en="What I Offer">خدماتي</h2>
+  <p data-ar="إطلالات مصممة لتناسب أجمل مناسباتك"
+   data-en="Beautiful looks for your special occasions">
+   إطلالات مصممة لتناسب أجمل مناسباتك
+  </p>
+ </div>
+
+ <div class="services">
+
+  <div class="service">
+   <div class="num">01</div>
+   <h3 data-ar="مكياج العرائس" data-en="Bridal Makeup">مكياج العرائس</h3>
+   <p data-ar="إطلالة استثنائية ليومك الكبير، تجمع بين الفخامة والنعومة وتبرز جمالك بأسلوب يليق بكِ."
+    data-en="An exceptional look for your special day, combining elegance and softness to enhance your natural beauty.">
+    إطلالة استثنائية ليومك الكبير، تجمع بين الفخامة والنعومة وتبرز جمالك بأسلوب يليق بكِ.
+   </p>
+  </div>
+
+  <div class="service">
+   <div class="num">02</div>
+   <h3 data-ar="مكياج المرافقات والمناسبات"
+    data-en="Bridesmaids & Occasion Makeup">مكياج المرافقات والمناسبات</h3>
+   <p data-ar="إطلالات أنيقة للمرافقات والمناسبات الخاصة، بتفاصيل مدروسة ولمسات جمالية متناسقة."
+    data-en="Elegant makeup for bridesmaids and special occasions, with carefully crafted details and beautiful finishing touches.">
+    إطلالات أنيقة للمرافقات والمناسبات الخاصة، بتفاصيل مدروسة ولمسات جمالية متناسقة.
+   </p>
+  </div>
+
+ </div>
+</section>
+
+<section class="section skills-section" id="skills">
+
+ <div class="heading">
+  <span>03 — MY EXPERTISE</span>
+  <h2 data-ar="مهاراتي" data-en="My Skills">مهاراتي</h2>
+  <p data-ar="خبرة وشغف واهتمام بكل تفصيلة"
+   data-en="Experience, passion and attention to every detail">
+   خبرة وشغف واهتمام بكل تفصيلة
+  </p>
+ </div>
+
+ <div class="skills">
+
+  <div class="skill">
+   <div class="number">01</div>
+   <h3 data-ar="تأسيس البشرة" data-en="Skin Preparation">تأسيس البشرة</h3>
+  </div>
+
+  <div class="skill">
+   <div class="number">02</div>
+   <h3 data-ar="دمج وتناسق الألوان" data-en="Color Blending">دمج وتناسق الألوان</h3>
+  </div>
+
+  <div class="skill">
+   <div class="number">03</div>
+   <h3 data-ar="مكياج العيون الاحترافي" data-en="Professional Eye Makeup">مكياج العيون الاحترافي</h3>
+  </div>
+
+  <div class="skill">
+   <div class="number">04</div>
+   <h3 data-ar="تحديد وإبراز الملامح" data-en="Contouring & Highlighting">تحديد وإبراز الملامح</h3>
+  </div>
+
+  <div class="skill">
+   <div class="number">05</div>
+   <h3 data-ar="تنسيق الإطلالات" data-en="Look Coordination">تنسيق الإطلالات</h3>
+  </div>
+
+ </div>
+</section>
+
+<section class="section experience">
+
+ <div class="experience-content">
+  <div class="heading">
+   <span>04 — MY JOURNEY</span>
+   <h2 data-ar="رحلة من الشغف إلى الاحتراف"
+    data-en="A Journey of Passion">رحلة من الشغف إلى الاحتراف</h2>
+  </div>
+
+  <div class="experience-number">7+</div>
+
+  <p
+   data-ar="سبع سنوات من الشغف والتطور والإبداع في عالم المكياج. كل إطلالة جديدة هي فرصة لصناعة تجربة جميلة وإبراز جمال مختلف."
+   data-en="Seven years of passion, growth and creativity in the world of makeup. Every new look is an opportunity to create something beautiful and celebrate unique beauty.">
+   سبع سنوات من الشغف والتطور والإبداع في عالم المكياج. كل إطلالة جديدة هي فرصة لصناعة تجربة جميلة وإبراز جمال مختلف.
+  </p>
+ </div>
+
+</section>
+
+<section class="section contact" id="contact">
+
+ <div class="contact-card">
+  <div class="heading">
+   <span>05 — GET IN TOUCH</span>
+   <h2 data-ar="لنصنع إطلالتك القادمة"
+    data-en="Let's Create Your Next Look">لنصنع إطلالتك القادمة</h2>
+  </div>
+
+  <p
+   data-ar="يسعدني أن أكون جزءاً من مناسبتك القادمة. للتفاصيل والحجوزات تواصلي معي."
+   data-en="I'd love to be part of your next special occasion. Get in touch for bookings and inquiries.">
+   يسعدني أن أكون جزءاً من مناسبتك القادمة. للتفاصيل والحجوزات تواصلي معي.
+  </p>
+
+  <div class="contact-links">
+   <a href="https://wa.me/966546797373" target="_blank">WhatsApp</a>
+   <a href="https://www.tiktok.com/@_tota1211" target="_blank">TikTok</a>
+   <a href="mailto:hafsa.bdm@icloud.com">Email</a>
+   <a href="tel:0546797373">0546797373</a>
+  </div>
+
+  <div class="location"
+   data-ar="✦ جدة، المملكة العربية السعودية"
+   data-en="✦ Jeddah, Saudi Arabia">
+   ✦ جدة، المملكة العربية السعودية
+  </div>
+ </div>
+
+</section>
+
+<footer>
+ <strong>TOTA</strong>
+ <p>MAKEUP ARTIST</p>
+ <p>© 2026 TOTA. ALL RIGHTS RESERVED.</p>
+ <p data-ar="صُنع بكل حب واهتمام بالتفاصيل ♡"
+ data-en="Made with love and attention to detail ♡">
+ صُنع بكل حب واهتمام بالتفاصيل ♡
+ </p>
+</footer>
+
+<script>
+let english = false;
+
+function toggleLang() {
+ english = !english;
+
+ document.documentElement.lang = english ? 'en' : 'ar';
+ document.documentElement.dir = english ? 'ltr' : 'rtl';
+
+ document.body.classList.toggle('en', english);
+
+ document.querySelectorAll('[data-ar]').forEach(el => {
+  el.textContent = english
+   ? el.getAttribute('data-en')
+   : el.getAttribute('data-ar');
+ });
+
+ document.querySelector('.lang').textContent =
+  english ? 'AR' : 'EN';
+}
+</script>
+
+</body>
+</html>
